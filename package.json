@@ -12,16 +12,10 @@
     "url": "https://github.com/bipuldey19/URL-Shortener-Bot-for-Telegram.git"
   },
   "keywords": [
-    "URL",
+    "URL-Shortener",
     "Shortener",
-    "Shortener",
-    "telegram",
-    "bot",
-    "url",
-    "shortener",
-    "bot",
-    "for",
-    "telegram"
+    "telegrambot",
+    "url-shortener-bot-for-telegram"
   ],
   "author": "Bipul Dey",
   "license": "ISC",
@@ -34,7 +28,7 @@
     "deshortify": "^1.0.4",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "node-telegram-bot-api": "^0.56.0"
+    "telegraf": "^4.7.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
