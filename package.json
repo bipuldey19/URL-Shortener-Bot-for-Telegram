@@ -1,0 +1,42 @@
+{
+  "name": "url-shortener-bot",
+  "version": "1.0.0",
+  "description": "A URL Shortener bot for telegram, written in node js. It gives tiny.one, cutt.ly, 1pt.co, is.gd, da.gd, goolnk.com, chilp.it, clck.ru shorturl at once without any command. Just give it a URL and it will shorten it automatically.",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bipuldey19/URL-Shortener-Bot-for-Telegram.git"
+  },
+  "keywords": [
+    "URL",
+    "Shortener",
+    "Shortener",
+    "telegram",
+    "bot",
+    "url",
+    "shortener",
+    "bot",
+    "for",
+    "telegram"
+  ],
+  "author": "Bipul Dey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bipuldey19/URL-Shortener-Bot-for-Telegram/issues"
+  },
+  "homepage": "https://github.com/bipuldey19/URL-Shortener-Bot-for-Telegram#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "deshortify": "^1.0.4",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "node-telegram-bot-api": "^0.56.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
