@@ -355,7 +355,7 @@ bot.launch();
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
 
-app.listen(1212, () => console.log("🚀 Listening on port 1212!"));
+app.listen(5000, () => console.log("🚀 Listening on port 5000!"));
 
 //////////////////////Commands/////////////////////////
 // unshorten - Unshorten a shortened URL (/unshorten <URL>) 🗜️
