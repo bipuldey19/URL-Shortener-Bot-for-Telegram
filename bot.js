@@ -146,54 +146,22 @@ bot.on("message", async (ctx) => {
         var Clckru = res[1];
         var Ptco = `https://1pt.co/${res[3].short}`;
 
+        var title = res[2].url.title;
+
         var urlResponse =
-          "✅ *URL shortened Successfully!*\n\n💠 *URL :* " +
-          url +
+          `✅ *URL shortened Successfully!*\n\n🔗 [${title}](${url})` +
           "\n\n🔰 *Shortended URLs :* \n\n" +
-          "💠 *Tinyurl:* " +
-          "`" +
-          Tinyurl +
-          "`\n" +
-          "💠 *Cuttly:* " +
-          "`" +
-          Cuttly +
-          "`\n" +
-          "💠 *1ptco:* " +
-          "`" +
-          Ptco +
-          "`\n" +
-          "💠 *Isgd:* " +
-          "`" +
-          Isgd +
-          "`\n" +
-          "💠 *Dagd:* " +
-          "`" +
-          Dagd +
-          "`\n" +
-          "💠 *Vgd:* " +
-          "`" +
-          Vgd +
-          "`\n" +
-          "💠 *Vola:* " +
-          "`" +
-          Vola +
-          "`\n" +
-          "💠 *Bcvc:* " +
-          "`" +
-          Bcvc +
-          "`\n" +
-          "💠 *Goolnk:* " +
-          "`" +
-          Goolnk +
-          "`\n" +
-          "💠 *Chilpit:* " +
-          "`" +
-          Chilpit +
-          "`" +
-          "💠 *Clckru:* " +
-          "`" +
-          Clckru +
-          "`";
+          "💠 *Tinyurl:* " + "`" + Tinyurl + "`\n" +
+          "💠 *Cuttly:* " + "`" + Cuttly + "`\n" +
+          "💠 *1ptco:* " + "`" + Ptco + "`\n" +
+          "💠 *Isgd:* " + "`" + Isgd + "`\n" +
+          "💠 *Dagd:* " + "`" + Dagd + "`\n" +
+          "💠 *Vgd:* " + "`" + Vgd + "`\n" +
+          "💠 *Vola:* " + "`" + Vola + "`\n" +
+          "💠 *Bcvc:* " + "`" + Bcvc + "`\n" +
+          "💠 *Goolnk:* " + "`" + Goolnk + "`\n" +
+          "💠 *Chilpit:* " + "`" + Chilpit + "`" +
+          "💠 *Clckru:* " + "`" + Clckru + "`";
 
         await ctx.telegram.editMessageText(
           ctx.from.id,
@@ -202,12 +170,22 @@ bot.on("message", async (ctx) => {
           urlResponse,
           {
             parse_mode: "Markdown",
+            // reply_markup: {
+            //   inline_keyboard: [
+            //     [
+            //       {
+            //         text: "🔗 Visit URL",
+            //         url: url,
+            //       },
+            //     ],
+            //   ],
+            // }
           }
         );
       })
       .catch(async (err) => {
         var errorResponse =
-          "❌ *URL shortening Failed!*\n\n💠 *URL :*" +
+          `❌ *URL shortening Failed!*\n\n🔗 [${title}](${url})` +
           url +
           "\n\n⚠️ *Error:* Invalid URL/Alias!\n _Or get /help_";
 
@@ -260,9 +238,9 @@ bot.on("message", async (ctx) => {
         )
         .then(async (res) => {
           var magnetResponse = res.data.shorturl;
-          var magnetResponseMessage = "✅ *Magnet Link shortened Successfully!*\n\n💠 *Magent Link :* " +
+          var magnetResponseMessage = "✅ *Magnet Link shortened Successfully!*\n\n💠 *Magent Link :*\n```" +
           magnet +
-          "\n\n🔰 *Shortended URL : * " +
+          "```\n\n🔰 *Shortended URL : * " +
           "`" +
           magnetResponse +
           "`";
@@ -286,9 +264,9 @@ bot.on("message", async (ctx) => {
           var magnetResponse = res.data.shorturl;
           var magnetResponseState = res.data.state;
           if (magnetResponseState == "success") {
-          var magnetResponseMessage = "✅ *Magnet Link shortened Successfully!*\n\n💠 *Magent Link:* " +
+          var magnetResponseMessage = "✅ *Magnet Link shortened Successfully!*\n\n💠 *Magent Link :*\n```" +
           magnet +
-          "\n\n🔰 *Shortended URL: * " +
+          "```\n\n🔰 *Shortended URL : * " +
           "`" +
           magnetResponse +
           "`";
@@ -337,7 +315,7 @@ bot.on("message", async (ctx) => {
             ctx.from.id,
             message_id,
             false,
-            "✅ *URL unshortened Successfully!*\n\n🔰 *Unshortened URL :*\n `" +
+            "✅ *URL unshortened Successfully!*\n\n"+`🔗 [Shoertened URL](${toDeshortify})`+"🔰 *Unshortened URL :*\n `" +
               url +
               "`",
             {
