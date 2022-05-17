@@ -22,8 +22,11 @@ const bcvcApi = process.env.BCVC_API; //Bcvc Token
 
 bot.on("message", async (ctx) => {
   // Main Shotener Code
+  console.log(ctx.message.text);
   if (
-    !ctx.message.text.toString().toLowerCase().includes("/unshorten") &&
+    ctx.message.text != undefined &&
+    ctx.message.text.toString().charAt(0) != "/" &&
+    !ctx.message.text.toString().toLowerCase().includes("magnet:?") &&
     (ctx.message.text.toString().toLowerCase().includes("https") ||
       ctx.message.text.toString().toLowerCase().includes("http"))
   ) {
@@ -203,27 +206,27 @@ bot.on("message", async (ctx) => {
   }
 
   // Start Message
-  else if (ctx.message.text.toString().includes("/start")) {
+  else if (ctx.message.text != undefined && ctx.message.text.toString().includes("/start")) {
     ctx.replyWithMarkdown(
       "👋🏻 *Hey burh! I am alive!*\n\nGive me a URL to shorten and I will do the rest! 🤖\n\n_Type /help for more info!_"
     );
   }
 
   // Help Message
-  else if (ctx.message.text.toString().includes("/help")) {
+  else if (ctx.message.text != undefined && ctx.message.text.toString().includes("/help")) {
     var help =
       "🟢 *HELP :*\n\n⭕ Check if I am alive by typing /start\n\n⭕ Give me a valid URL to shorten and I will do the rest!\n\n*Example:*\n `https://www.google.com`\n\n*Example with Custom Alias:*\n `https://www.google.com google`\n\n⭕ For unshortening a shortened URL use /unshorten\n\n*Example:*\n `/unshorten https://tiny.one/abcdefg`\n\n⚠️ *Note :*\n\n1️⃣ *Custom Alias* is optional.\n2️⃣ Only *TinyURL, Cuttly, 1ptco, Isgd, Dagd, Vgd, Vola* supports *Custom Alias*.\n3️⃣ *Dagd* supports 10 character *Custom Alias*.\n4️⃣ On *error* try to change the *Custom Alias*.\n5️⃣ Check if the URL contains *https://* or *http://*. Otherwise I can't shorten the URL.";
     ctx.replyWithMarkdown(help);
   }
 
   // All Features
-  else if (ctx.message.text.toString().includes("/features")) {
+  else if (ctx.message.text != undefined && ctx.message.text.toString().includes("/features")) {
     var features = `🚀 *All features of this URL Shortener Bot:*\n\n🅞🅝🅔\nCan shorten the URLs with 11 URL Shorteners. Available URL Shorteners are:\n*① TinyURL: *https://tinyurl.com/app/ _(Supports custom alias)_\n*② Cuttly: *https://cutt.ly/ _(Supports custom alias)_\n*③ 1ptco: *https://1pt.co/ _(Supports custom alias)_\n*④ Isgd: *https://is.gd/ _(Supports custom alias)_\n*⑤ Dagd: *https://da.gd/ _(Supports custom alias)_\n*⑥ Vgd: *https://v.gd/ _(Supports custom alias)_\n*⑦ Vola: *https://vo.la/ _(Supports custom alias)_\n*⑧ Bcvc: *https://bc.vc/\n*⑨ Goolnk: *https://goolnk.com/\n*⑩ Chilpit: *http://chilp.it/\n*⑪ Clckru: *https://clck.ru/\n_ *More URL Shorteners coming soon..._\n\n🅣🅦🅞\nCan shorten magnet links. Available Magnet Link Shortener:\n*① Mgnetme: *http://mgnet.me/\n\n🅣🅗🅡🅔🅔\nCan unshorten the URLs. Available URL Unshortener:\n*① Deshortify:* https://www.npmjs.com/package/deshortify\n\n🅗🅞🅦 🅣🅞 🅤🅢🅔\nSee /help for more info.`;
     ctx.replyWithMarkdown(features);
   }
 
   // Magnet link shortener
-  else if (ctx.message.text.toString().includes("magnet:")) {
+  else if (ctx.message.text != undefined && ctx.message.text.toString().includes("magnet:")) {
     var requestedMagnet = ctx.message.text.toString();
     var splitMagnet = requestedMagnet.split(" ");
     var magnet = splitMagnet[0];
@@ -232,9 +235,20 @@ bot.on("message", async (ctx) => {
       "⚙️ *Shortening your Magnet Link...*\n\n⏱️ _Please wait. It may take a while..._"
     );
     if (magnetAlias == undefined) {
+      function makeAlias(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+          result += characters.charAt(Math.floor(Math.random() * 
+      charactersLength));
+       }
+       return result;
+       }
+      var alias = makeAlias(10);
       axios
         .get(
-          `http://mgnet.me/api/create?&format=json&m=${magnet}`
+          `http://mgnet.me/api/create?&format=json&opt=${alias}&m=${magnet}`
         )
         .then(async (res) => {
           var magnetResponse = res.data.shorturl;
@@ -301,7 +315,7 @@ bot.on("message", async (ctx) => {
   }
 
   // Unshorten URL
-  else if (ctx.message.text.toString().toLowerCase().includes("/unshorten")) {
+  else if (ctx.message.text != undefined && ctx.message.text.toString().toLowerCase().includes("/unshorten")) {
     var emptyCheck = ctx.message.text.toString().split(" ");
     if (emptyCheck.length == 2) {
       var toDeshortify = ctx.message.text.toString().replace("/unshorten", "");
