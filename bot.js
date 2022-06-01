@@ -90,7 +90,7 @@ bot.on("message", async (ctx) => {
       // Get request for each url
       for (var i = 0; i < getUrls.length; i++) {
         try{
-          var getResponse = await axios.get(getUrls[i]);
+        var getResponse = await axios.get(getUrls[i]);
         var getData = getResponse.data;
         results.push(getData);
         await ctx.telegram.editMessageText(
@@ -108,21 +108,27 @@ bot.on("message", async (ctx) => {
         }
       }
       // Post requestes
-      var golnkResponse = await axios.post(goolnkURL, {
-        url: url,
-      });
-      var golnkData = golnkResponse.data.result_url;
-      results.push(golnkData);
-      await ctx.telegram.editMessageText(
-        ctx.from.id,
-        message_id,
-        false,
-        `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *10* shortened links ready...`,
-        {
-          parse_mode: "Markdown",
-        }
-      );
+      try{
+        var golnkResponse = await axios.post(goolnkURL, {
+          url: url,
+        });
+        var golnkData = golnkResponse.data.result_url;
+        results.push(golnkData);
+        await ctx.telegram.editMessageText(
+          ctx.from.id,
+          message_id,
+          false,
+          `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *10* shortened links ready...`,
+          {
+            parse_mode: "Markdown",
+          }
+        );
+      }
+      catch(err){
+        console.log(err);
+      }
 
+      try{
       var tinyResponse = await axios.post(tinyURL, tinyOptions);
       var tinyData = tinyResponse.data.data.tiny_url;
       results.push(tinyData);
@@ -135,6 +141,10 @@ bot.on("message", async (ctx) => {
           parse_mode: "Markdown",
         }
       );
+      }
+      catch(err){
+        console.log(err);
+      }
 
       return results;
     };
