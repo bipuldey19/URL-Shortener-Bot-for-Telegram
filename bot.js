@@ -45,7 +45,7 @@ bot.on("message", async (ctx) => {
 
     var tinyURL = `https://api.tinyurl.com/create`; //With Custom Alias
     var cuttlyURL = `https://cutt.ly/api/api.php?key=${cuttlyApi}&short=${url}`;
-    var ptcoURL = `https://api.1pt.co/addURL?long=${url}`;
+    // var ptcoURL = `https://api.1pt.co/addURL?long=${url}`;
     var volaURL = `https://vo.la/api/?key=${volaApi}&url=${url}`;
     var dagdURL = `https://da.gd/s?url=${url}`;
     var isgdURL = `https://is.gd/create.php?format=json&url=${url}`;
@@ -53,7 +53,7 @@ bot.on("message", async (ctx) => {
 
     if (alias != undefined) {
       cuttlyURL += `&name=${alias}`;
-      ptcoURL += `&short=${alias}`;
+      // ptcoURL += `&short=${alias}`;
       volaURL += `&custom=${alias}`;
       dagdURL += `&shorturl=${alias}`;
       isgdURL += `&shorturl=${alias}`;
@@ -76,7 +76,7 @@ bot.on("message", async (ctx) => {
       chilpURL,
       clckruURL,
       cuttlyURL,
-      ptcoURL,
+      // ptcoURL,
       volaURL,
       bcvcURL,
       dagdURL,
@@ -89,18 +89,23 @@ bot.on("message", async (ctx) => {
 
       // Get request for each url
       for (var i = 0; i < getUrls.length; i++) {
-        var getResponse = await axios.get(getUrls[i]);
+        try{
+          var getResponse = await axios.get(getUrls[i]);
         var getData = getResponse.data;
         results.push(getData);
         await ctx.telegram.editMessageText(
           ctx.from.id,
           message_id,
           false,
-          `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *11* shortened links ready...`,
+          `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *10* shortened links ready...`,
           {
             parse_mode: "Markdown",
           }
         );
+        }
+        catch(err){
+          console.log(err);
+        }
       }
       // Post requestes
       var golnkResponse = await axios.post(goolnkURL, {
@@ -112,7 +117,7 @@ bot.on("message", async (ctx) => {
         ctx.from.id,
         message_id,
         false,
-        `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *11* shortened links ready...`,
+        `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *10* shortened links ready...`,
         {
           parse_mode: "Markdown",
         }
@@ -125,7 +130,7 @@ bot.on("message", async (ctx) => {
         ctx.from.id,
         message_id,
         false,
-        `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *11* shortened links ready...`,
+        `⚙️ *Shortening your URL...*\n\n✅ *${results.length}* out of *10* shortened links ready...`,
         {
           parse_mode: "Markdown",
         }
@@ -137,17 +142,17 @@ bot.on("message", async (ctx) => {
     axiosReq()
       .then(async (res) => {
         // Shortened URLs
-        var Tinyurl = res[10];
+        var Tinyurl = res[9];
         var Cuttly = res[2].url.shortLink;
-        var Isgd = res[7].shorturl;
-        var Vgd = res[8].shorturl;
-        var Dagd = res[6].toString().replace("\n", "");
-        var Bcvc = res[5];
-        var Vola = res[4].short;
-        var Goolnk = res[9];
+        var Isgd = res[6].shorturl;
+        var Vgd = res[7].shorturl;
+        var Dagd = res[5].toString().replace("\n", "");
+        var Bcvc = res[4];
+        var Vola = res[3].short;
+        var Goolnk = res[8];
         var Chilpit = res[0];
         var Clckru = res[1];
-        var Ptco = `https://1pt.co/${res[3].short}`;
+        // var Ptco = `https://1pt.co/${res[3].short}`;
 
         var title = res[2].url.title;
 
@@ -156,7 +161,7 @@ bot.on("message", async (ctx) => {
           "\n\n🔰 *Shortended URLs :* \n\n" +
           "💠 *Tinyurl:* " + "`" + Tinyurl + "`\n" +
           "💠 *Cuttly:* " + "`" + Cuttly + "`\n" +
-          "💠 *1ptco:* " + "`" + Ptco + "`\n" +
+          // "💠 *1ptco:* " + "`" + Ptco + "`\n" +
           "💠 *Isgd:* " + "`" + Isgd + "`\n" +
           "💠 *Dagd:* " + "`" + Dagd + "`\n" +
           "💠 *Vgd:* " + "`" + Vgd + "`\n" +
@@ -215,7 +220,7 @@ bot.on("message", async (ctx) => {
   // Help Message
   else if (ctx.message.text != undefined && ctx.message.text.toString().includes("/help")) {
     var help =
-      "🟢 *HELP :*\n\n⭕ Check if I am alive by typing /start\n\n⭕ Give me a valid URL to shorten and I will do the rest!\n\n*Example:*\n `https://www.google.com`\n\n*Example with Custom Alias:*\n `https://www.google.com google`\n\n⭕ For unshortening a shortened URL use /unshorten\n\n*Example:*\n `/unshorten https://tiny.one/abcdefg`\n\n⚠️ *Note :*\n\n1️⃣ *Custom Alias* is optional.\n2️⃣ Only *TinyURL, Cuttly, 1ptco, Isgd, Dagd, Vgd, Vola* supports *Custom Alias*.\n3️⃣ *Dagd* supports 10 character *Custom Alias*.\n4️⃣ On *error* try to change the *Custom Alias*.\n5️⃣ Check if the URL contains *https://* or *http://*. Otherwise I can't shorten the URL.";
+      "🟢 *HELP :*\n\n⭕ Check if I am alive by typing /start\n\n⭕ Give me a valid URL to shorten and I will do the rest!\n\n*Example:*\n `https://www.google.com`\n\n*Example with Custom Alias:*\n `https://www.google.com google`\n\n⭕ For unshortening a shortened URL use /unshorten\n\n*Example:*\n `/unshorten https://tiny.one/abcdefg`\n\n⚠️ *Note :*\n\n1️⃣ *Custom Alias* is optional.\n2️⃣ Only *TinyURL, Cuttly, Isgd, Dagd, Vgd, Vola* supports *Custom Alias*.\n3️⃣ *Dagd* supports 10 character *Custom Alias*.\n4️⃣ On *error* try to change the *Custom Alias*.\n5️⃣ Check if the URL contains *https://* or *http://*. Otherwise I can't shorten the URL.";
     ctx.replyWithMarkdown(help);
   }
 
