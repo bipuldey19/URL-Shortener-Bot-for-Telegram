@@ -22,7 +22,7 @@ const bcvcApi = process.env.BCVC_API; //Bcvc Token
 
 bot.on("message", async (ctx) => {
   // Main Shotener Code
-  console.log(ctx.message.text);
+  console.log(ctx.message.chat.id);
   if (
     ctx.message.text != undefined &&
     ctx.message.text.toString().charAt(0) != "/" &&
@@ -188,22 +188,12 @@ bot.on("message", async (ctx) => {
           urlResponse,
           {
             parse_mode: "Markdown",
-            // reply_markup: {
-            //   inline_keyboard: [
-            //     [
-            //       {
-            //         text: "🔗 Visit URL",
-            //         url: url,
-            //       },
-            //     ],
-            //   ],
-            // }
           }
         );
       })
       .catch(async (err) => {
         var errorResponse =
-          `❌ *URL shortening Failed!*\n\n🔗 [${title}](${url})` +
+          `❌ *URL shortening Failed!*\n\n *Given URL :* ` +
           url +
           "\n\n⚠️ *Error:* Invalid URL/Alias!\n _Or get /help_";
 
@@ -242,7 +232,8 @@ bot.on("message", async (ctx) => {
 
   // Magnet link shortener
   else if (ctx.message.text != undefined && ctx.message.text.toString().includes("magnet:")) {
-    var requestedMagnet = ctx.message.text.toString();
+    try{
+      var requestedMagnet = ctx.message.text.toString();
     var splitMagnet = requestedMagnet.split(" ");
     var magnet = splitMagnet[0];
     var magnetAlias = splitMagnet[1];
@@ -326,12 +317,18 @@ bot.on("message", async (ctx) => {
             );
           }
         })
+      }
     }
+    catch(err){
+      console.log(err);
+    }
+    
   }
 
   // Unshorten URL
   else if (ctx.message.text != undefined && ctx.message.text.toString().toLowerCase().includes("/unshorten")) {
-    var emptyCheck = ctx.message.text.toString().split(" ");
+    try{
+      var emptyCheck = ctx.message.text.toString().split(" ");
     if (emptyCheck.length == 2) {
       var toDeshortify = ctx.message.text.toString().replace("/unshorten", "");
       var { message_id } = await ctx.replyWithMarkdown(
@@ -344,7 +341,7 @@ bot.on("message", async (ctx) => {
             ctx.from.id,
             message_id,
             false,
-            "✅ *URL unshortened Successfully!*\n\n"+`🔗 [Shoertened URL](${toDeshortify})`+"🔰 *Unshortened URL :*\n `" +
+            "✅ *URL unshortened Successfully!*\n\n"+`🔗 *Shoertened URL : *${toDeshortify}`+"\n🔰 *Unshortened URL :*\n `" +
               url +
               "`",
             {
@@ -369,12 +366,22 @@ bot.on("message", async (ctx) => {
     } else {
       ctx.replyWithMarkdown("⚠️ *Please give a URL after /unshorten*");
     }
+    }
+    catch(err){
+      console.log(err);
+    }
+    
   }
 
   // Text filter
   else {
-    var notMine = `😓 I'm not a bot for chat! Give me a *valid URL* to shorten. I can do nothing but *shorten the URL*.\n\n⚠️ _But if you gave me a valid URL but I can't identify it as a URL then see /help._`;
+    try{
+      var notMine = `😓 I'm not a bot for chat! Give me a *valid URL* to shorten. I can do nothing but *shorten the URL*.\n\n⚠️ _But if you gave me a valid URL but I can't identify it as a URL then see /help._`;
     ctx.replyWithMarkdown(notMine);
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 });
 
