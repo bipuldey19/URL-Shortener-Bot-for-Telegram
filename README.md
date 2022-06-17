@@ -19,10 +19,7 @@ This is a Telegram bot which can shorten or unshorten your URLs. It can also sho
     <summary><h2>⁉️ How to deploy</h2></summary>
 <ol>
 <li>Fork this repo</li>
-<li>Copy the sample.env contents</li>
-<li>Create a new file named .env</li>
-<li>Paste the sample.env contents in the .env file</li>
-<li>From <a href="https://t.me/BotFather">BotFather</a> make a new bot and copy the BOT_TOKEN and paste it in the .env</li>
+<li>From <a href="https://t.me/BotFather">BotFather</a> make a new bot and copy the BOT_TOKEN and paste it in the sample.env</li>
 <li>Write <code>/mybots</code> and select your bot and then **Edit Bot > Edit Commands** and paste the below Commands</li>
 <pre>
 unshorten - Unshorten a shortened URL (/unshorten <URL>) 🗜
@@ -31,7 +28,7 @@ start - Check if I am alive 🤨
 help - Get some help 🆘
 </pre>
 <li>Go to <a href="https://tinyurl.com/app">TinyUrl</a>, <a href="https://cutt.ly/">Cuttly</a>, <a href="https://vo.la/">Vola</a>, <a href="https://bc.vc/">Bcvc</a> and sign up to get an api key</li>
-<li>Copy the api keys and paste them in the .env file</li>
+<li>Copy the api keys and paste them in the sample.env file</li>
 <li>Press <code>Commit New File</code></li>
 <li>Go to <a href="https://replit.com/signup?from=landing">Replit</a> and signup with your github account</li>
 <li>Press <code>+ Create</code> tab</li>
@@ -41,7 +38,7 @@ help - Get some help 🆘
 <p align="left">
     <img src="https://telegra.ph/file/e2565dd6e2ea7ab792f90.png">
 </p>
-<li> Add the .env keys and values one by one and click <code>Add new Secret</code></li> </br>
+<li> Add the sample.env keys and values one by one and click <code>Add new Secret</code></li> </br>
 <p align="left">
     <img src="https://telegra.ph/file/32b386ed7afea6270af7e.png">
 </p>
