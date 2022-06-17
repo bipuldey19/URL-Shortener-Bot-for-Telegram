@@ -4,6 +4,13 @@
 This is a Telegram bot which can shorten or unshorten your URLs. It can also shorten your magnet links. 
 > This Bot won't work in groups. So it will be a wise decision if you disallow groups from bot father. **Go to @BotFather > Bot Settings > Allow Groups? > Turn groups off**
 
+## 🛠️ Built by
+
+- [Telegraf](https://www.npmjs.com/package/telegraf)
+- [Express](https://www.npmjs.com/package/express)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Deshortify](https://www.npmjs.com/package/deshortify)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
 
 ## 🚀 Features
 
