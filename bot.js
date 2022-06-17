@@ -397,4 +397,4 @@ app.listen(5000, () => console.log("🚀 Listening on port 5000!"));
 // unshorten - Unshorten a shortened URL (/unshorten <URL>) 🗜️
 // features - Show the list of features 🚀
 // start - Check if I am alive 🤨
-// hlep - Get some help 🆘
+// help - Get some help 🆘
