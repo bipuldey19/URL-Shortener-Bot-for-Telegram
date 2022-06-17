@@ -17,6 +17,7 @@ A Node.js Telegram bot which can shorten or unshorten your URLs. It can also sho
 - **Supports 11 URL Shortener**
     - tinyurl.com, cutt.ly, ~~1pt.co~~, is.gd, da.gd, v.gd, vo.la, bc.vc, goolnk.com, chilp.it, clck.ru
 - **Supports custom alias**
+    - tinyurl.com, cutt.ly, ~~1pt.co~~, is.gd, da.gd, v.gd, vo.la
 - **Magnet link Shortener**
     - mgnet.me
 - **URL Unshortener**
