@@ -61,7 +61,7 @@ help - Get some help 🆘
 <p align="left">
     <img src="https://telegra.ph/file/0956f42c048ff09c00252.png">
 </p>
-<li> Then press create done now just check the bot it should work fine 24/7</li>
+<li> Then press <code>Create</create>. Done! Now just check the bot it should work fine 24/7</li>
 </ol>
 </details>
 
