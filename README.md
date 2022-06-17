@@ -1,7 +1,7 @@
 
 # URL Shortener Bot for Telegram
 
-This is a Telegram bot which can shorten or unshorten your URLs. It can also shorten your magnet links. 
+A Node.js Telegram bot which can shorten or unshorten your URLs. It can also shorten your magnet links. 
 > This Bot won't work in groups. So it will be a wise decision if you disallow groups from bot father. **Go to @BotFather > Bot Settings > Allow Groups? > Turn groups off**
 
 ## 🛠️ Built by
