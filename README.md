@@ -71,7 +71,7 @@ help - Get some help 🆘
     
 ## Screenshot
 
-<img src="https://telegra.ph/file/ded190af77245cb7adcac.png"></img>
+<img height="540" width="336" src="https://telegra.ph/file/ded190af77245cb7adcac.png"></img>
 
 ## Feedback
 
@@ -79,5 +79,5 @@ If you have any feedback or any suggestions, please reach out to me at [Bipul De
 
 Feel free to give Pull Requests and Bug Report
 
-🖤 __Please give this repo a star if you like it. This will encourage me to do more works like this__
+<p align="center"><b>🖤 Please give this repo a star if you like it. This will encourage me to do more works like this</b><p>
 
