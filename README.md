@@ -7,13 +7,13 @@ This is a Telegram bot which can shorten or unshorten your URLs. It can also sho
 
 ## 🚀 Features
 
-- Supports 11 URL Shortener
-> tinyurl.com, cutt.ly, ~~1pt.co~~, is.gd, da.gd, v.gd, vo.la, bc.vc, goolnk.com, chilp.it, clck.ru
-- Supports custom alias
-- Magnet link Shortener
-> mgnet.me
-- URL Unshortener
-> [Deshortify](https://www.npmjs.com/package/deshortify)
+- **Supports 11 URL Shortener**
+    - tinyurl.com, cutt.ly, ~~1pt.co~~, is.gd, da.gd, v.gd, vo.la, bc.vc, goolnk.com, chilp.it, clck.ru
+- **Supports custom alias**
+- **Magnet link Shortener**
+    - mgnet.me
+- **URL Unshortener**
+    - [Deshortify](https://www.npmjs.com/package/deshortify)
 
 <details>
     <summary><h2>⁉️ How to deploy</h2></summary>
@@ -69,15 +69,15 @@ help - Get some help 🆘
 </details>
 
     
-## Screenshot
+## 🖼️ Screenshot
 
 <img height="540" width="336" src="https://telegra.ph/file/ded190af77245cb7adcac.png"></img>
 
-## Feedback
+## 📨 Feedback
 
-If you have any feedback or any suggestions, please reach out to me at [Bipul Dey](https://t.me/bipuldey19)
+- If you have any feedback or any suggestions, please reach out to me at [Bipul Dey](https://t.me/bipuldey19)
 
-Feel free to give Pull Requests and Bug Report
+- Feel free to give Pull Requests and Bug Report
 
 <p align="center"><b>🖤 Please give this repo a star if you like it. This will encourage me to do more works like this</b><p>
 
