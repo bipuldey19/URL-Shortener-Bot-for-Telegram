@@ -35,6 +35,8 @@ help - Get some help 🆘
 <li>Press <code>Commit New File</code></li>
 <li>Go to <a href="https://replit.com/signup?from=landing">Replit</a> and signup with your github account</li>
 <li>Press <code>+ Create</code> tab</li>
+<li>Press <code>Import from Github</code> and select the forked repo</li>
+<li>Go to the Secrets tab</li>
 </br>
 <p align="left">
     <img src="https://telegra.ph/file/e2565dd6e2ea7ab792f90.png">
